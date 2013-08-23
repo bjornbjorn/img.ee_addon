@@ -54,6 +54,11 @@ class Imglib
             $cached_filename.='-zc';
         }
 
+        if(isset($options['position'])) {
+            $cached_filename.='-'.strtolower($options['position']);
+        }
+
+
         return $cached_filename . $extension;
     }
 

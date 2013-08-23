@@ -72,6 +72,7 @@ class Img {
             $height = $this->EE->TMPL->fetch_param('h', $this->EE->TMPL->fetch_param('height'));
             $zoom_crop = $this->EE->TMPL->fetch_param('zoom_crop') != 'no';
             $retina = $this->EE->TMPL->fetch_param('retina') == 'yes';
+            $position = $this->EE->TMPL->fetch_param('position', 'MM');
 
 
             // check if sizebyclass is set
@@ -151,7 +152,7 @@ class Img {
 
             if($width || $height) {
 
-                $resized_filename = $this->EE->imglib->get_cache_filename($src, array('width' => $width,'height'=>$height, 'zoom_crop' => $zoom_crop));
+                $resized_filename = $this->EE->imglib->get_cache_filename($src, array('width' => $width,'height'=>$height, 'zoom_crop' => $zoom_crop, 'position' => $position));
                 $cached_file_path = $this->EE->config->slash_item('wda_img_cache_path') . $resized_filename;
                 $image_url = FALSE;
 
@@ -198,7 +199,7 @@ class Img {
                                 $resizeWidth = ceil($img->getWidth() * $ratio);
                                 $resizeHeight = ceil($img->getHeight() * $ratio);
                                 $img->resizeInPixel($resizeWidth, $resizeHeight, true);
-                                $img->cropInPixel($width, $height, 0, 0, 'MM');
+                                $img->cropInPixel($width, $height, 0, 0, $position);
                             }
                             else
                             {
