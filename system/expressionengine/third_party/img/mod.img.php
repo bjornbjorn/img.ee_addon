@@ -125,30 +125,6 @@ class Img {
         {
             return '';
         }
-        else if(!$src) {
-
-            // empty, no source specified
-            $img = new \PHPImageWorkshop\ImageWorkshop(
-                array('imageFromPath' => PATH_THIRD.'img/error_image.png')
-            );
-
-
-            // sprintf($this->errors[1],$src)
-
-        } else {
-            try {
-                $img = new \PHPImageWorkshop\ImageWorkshop(
-                    array('imageFromPath' => $src,
-                    'width' => $width,
-                    'height' => $height,
-                    )
-                );
-            } catch(\PHPImageWorkshop\ImageWorkshopException $e) {
-                $img = new \PHPImageWorkshop\ImageWorkshop(
-                    array('imageFromPath' => PATH_THIRD.'img/error_image.png')
-                );
-            }
-        }
 
             if($width || $height) {
 
@@ -172,6 +148,30 @@ class Img {
 
                 if($this->EE->config->item('wda_img_disable_cache') == 'y' || $overwrite_cache || !file_exists($cached_file_path)) {
 
+					if(!$src) {
+
+						// empty, no source specified
+						$img = new \PHPImageWorkshop\ImageWorkshop(
+							array('imageFromPath' => PATH_THIRD.'img/error_image.png')
+						);
+
+
+						// sprintf($this->errors[1],$src)
+
+					} else {
+						try {
+							$img = new \PHPImageWorkshop\ImageWorkshop(
+								array('imageFromPath' => $src,
+								'width' => $width,
+								'height' => $height,
+								)
+							);
+						} catch(\PHPImageWorkshop\ImageWorkshopException $e) {
+							$img = new \PHPImageWorkshop\ImageWorkshop(
+								array('imageFromPath' => PATH_THIRD.'img/error_image.png')
+							);
+						}
+					}				
 
                     /**
                      * This means the original is the exact size we're requesting, so do not change it, if config option is set
