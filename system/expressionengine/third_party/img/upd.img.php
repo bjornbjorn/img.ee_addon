@@ -26,7 +26,7 @@
 
 class Img_upd {
 	
-	public $version = '1.1';
+	public $version = '1.2';
 	
 	private $EE;
 	

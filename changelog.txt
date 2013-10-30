@@ -1,0 +1,15 @@
+Changelog for Img
+=================
+The dates in this changelog use international date format: YYYY-MM-DD (ISO8601)
+
+1.2 - 2013-10-30
+----------------
+* Added support for normal File fields
+
+1.1 - 2013-09-17
+----------------
+* Performance tweaks and bugfixes
+
+1.0 - 2013-08-23
+----------------
+Initial release

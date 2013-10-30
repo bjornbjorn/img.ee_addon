@@ -74,6 +74,19 @@ class Img {
             $retina = $this->EE->TMPL->fetch_param('retina') == 'yes';
             $position = $this->EE->TMPL->fetch_param('position', 'MM');
 
+            /**
+             * If $src contains {filedir_X} parse it
+             */
+            /**
+             * If string contains a {filedir_x} reference we replace it with the correct url
+             */
+            if (preg_match('/^{filedir_(\d+)}/', $src, $matches))
+            {
+                $filedir_id = $matches[1];
+                $this->EE->load->model('file_upload_preferences_model');
+                $upload_dest_info = $this->EE->file_upload_preferences_model->get_file_upload_preferences(FALSE, $filedir_id);
+                $src = str_replace('{filedir_'.$filedir_id.'}', $upload_dest_info['server_path'], $src);
+            }
 
             // check if sizebyclass is set
             if(!$width && !$height) {
