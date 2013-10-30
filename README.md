@@ -25,9 +25,9 @@ $env_config['wda_img_do_not_resize_if_match'] = 'y';    // do not resize if imag
 Example usage w/an Assets field:
 
 ```html
-                    {exp:img:resize src="{portfolio_grid_image:server_path}" width="235" height="235" retina="yes"}
-                    <img src="{img:url}" width="100%" height="100%"/>
-                    {/exp:img:resize}
+{exp:img:resize src="{portfolio_grid_image:server_path}" width="235" height="235" retina="yes"}
+<img src="{img:url}" width="100%" height="100%"/>
+{/exp:img:resize}
 ```
 
 Note: retina="yes" will produce width/height * 2 in this case a 470x470 image.
@@ -35,7 +35,7 @@ Note: retina="yes" will produce width/height * 2 in this case a 470x470 image.
 Example usage w/a normal File field
 
 ```html
-                    {exp:img:resize src="{portfolio_grid_image}" width="235" height="235" retina="yes"}
-                    <img src="{img:url}" width="100%" height="100%"/>
-                    {/exp:img:resize}
+{exp:img:resize src="{portfolio_grid_image}" width="235" height="235" retina="yes"}
+<img src="{img:url}" width="100%" height="100%"/>
+{/exp:img:resize}
 ```
