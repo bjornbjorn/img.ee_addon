@@ -54,12 +54,12 @@ class Img_mcp {
 	 */
 	public function index()
 	{
-		$this->EE->cp->set_variable('cp_page_title', 
-								lang('img_module_name'));
-		
-		/**
-		 * This is the addons home page, add more code here!
-		 */		
+        // $this->EE->cp->set_variable was deprecated in 2.6
+        if (version_compare(APP_VER, '2.6', '>=')) {
+            $this->EE->view->cp_page_title = lang('img_module_name');
+        } else {
+            $this->EE->cp->set_variable('cp_page_title', lang('img_module_name'));
+        }
 	}
 
 	/**

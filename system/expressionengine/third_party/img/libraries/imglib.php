@@ -6,6 +6,7 @@ class Imglib
     public function __construct()
     {
         $this->EE = get_instance();
+        $this->EE->load->helper('url');
     }
 
     /**
@@ -43,7 +44,8 @@ class Imglib
         $filename_wo_ext = substr($filename, 0, strrpos($filename,'.'));
         $extension = substr($filename, strrpos($filename,'.'));
 
-        $cached_filename = $filename_wo_ext;
+        $cached_filename = url_title($filename_wo_ext);
+
         if(isset($options['width']) && $options['width']) {
             $cached_filename.='-w'.$options['width'];
         }

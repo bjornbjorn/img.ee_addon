@@ -75,6 +75,14 @@ class Img {
             $position = $this->EE->TMPL->fetch_param('position', 'MM');
 
             /**
+             * If $src contains site_url then we strip it (normal File field)
+             */
+
+            if(strpos($src, $this->EE->config->item('site_url')) !== FALSE) {
+                $src = $this->EE->config->item('wda_img_webroot_path') . str_replace($this->EE->config->item('site_url'), '', rawurldecode($src));
+            }
+
+            /**
              * If $src contains {filedir_X} parse it
              */
             /**
@@ -117,9 +125,11 @@ class Img {
         }
 
 
+
+
 	// make sure the image actually exists
 	if (!file_exists($src)) {
-		return '';
+		  return '';
 	}
 
         $tag_width = $width;
