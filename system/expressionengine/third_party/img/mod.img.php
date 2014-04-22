@@ -61,7 +61,7 @@ class Img {
      *
      * @return mixed
      */
-    public function resize($src=FALSE, $width=FALSE,$height=FALSE,$zoom_crop=TRUE,$retina=FALSE)
+    public function resize($src=FALSE, $width=FALSE,$height=FALSE,$zoom_crop=TRUE,$retina=FALSE,$position='MM')
     {
         $from_template = FALSE;
         if(!$src)
